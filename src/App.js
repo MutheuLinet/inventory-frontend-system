@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import { InventoryTable } from "./components/InventoryTable";
+import { fetchInventoryProducts } from "./api/fetchInventoryProducts";
+import { getProductsDisplayData } from "./helpers/getProductsDisplayData";
 
 function App() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProductsData();
+  }, []);
+
+  const getProductsData = async () => {
+    const initialProducts = await fetchInventoryProducts();
+    console.log(initialProducts);
+    const displayProductsFormat = getProductsDisplayData(initialProducts);
+    setProducts(displayProductsFormat);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Inventory Management System</h3>
+      <InventoryTable products={products} />
     </div>
   );
 }
