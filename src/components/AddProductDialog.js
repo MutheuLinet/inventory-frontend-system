@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import moment from "moment/moment";
 
-function AddProductDialog({ open }) {
+function AddProductDialog({ open, toggle }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [cost, setCost] = useState(0);
@@ -19,6 +19,11 @@ function AddProductDialog({ open }) {
   return (
     <div stlye={{}}>
       <Dialog open={open}>
+        <DialogActions>
+          <Button variant="outlined" color="primary" onClick={toggle}>
+            Close
+          </Button>
+        </DialogActions>
         <DialogTitle>{"Add a Product"}</DialogTitle>
         <DialogContent>
           <Box
@@ -93,6 +98,11 @@ function AddProductDialog({ open }) {
             />
           </Box>
         </DialogContent>
+        <DialogActions>
+          <Button variant="outlined" color="primary" onClick={saveProduct}>
+            Submit
+          </Button>
+        </DialogActions>
       </Dialog>
     </div>
   );
