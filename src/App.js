@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { InventoryTable } from "./components/InventoryTable";
 import { fetchInventoryProducts } from "./api/fetchInventoryProducts";
 import { getProductsDisplayData } from "./helpers/getProductsDisplayData";
+import { AddProductDialog } from "./components/AddProductDialog";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     getProductsData();
@@ -17,11 +19,20 @@ function App() {
     const displayProductsFormat = getProductsDisplayData(initialProducts);
     setProducts(displayProductsFormat);
   };
+  const handleClickToOpen = () => {
+    setShowDialog(true);
+  };
 
   return (
     <div className="App">
       <h3>Inventory Management System</h3>
       <InventoryTable products={products} />
+      <br />
+      <button onClick={handleClickToOpen} style={{ marginBottom: "20px" }}>
+        Add Product
+      </button>
+      <br />
+      <AddProductDialog open={showDialog} />
     </div>
   );
 }
