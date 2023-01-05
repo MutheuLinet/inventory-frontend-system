@@ -12,15 +12,20 @@ function App() {
   useEffect(() => {
     getProductsData();
   }, []);
-
+  //fetches products and sets them to state
   const getProductsData = async () => {
     const initialProducts = await fetchInventoryProducts();
     console.log(initialProducts);
     const displayProductsFormat = getProductsDisplayData(initialProducts);
     setProducts(displayProductsFormat);
   };
+  //opens AddProductDialog
   const handleClickToOpen = () => {
     setShowDialog(true);
+  };
+  //closes AddProductDialog
+  const handleClose = () => {
+    setShowDialog(false);
   };
 
   return (
@@ -32,7 +37,7 @@ function App() {
         Add Product
       </button>
       <br />
-      <AddProductDialog open={showDialog} />
+      <AddProductDialog open={showDialog} toggle={handleClose} />
     </div>
   );
 }
