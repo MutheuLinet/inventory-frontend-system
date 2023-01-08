@@ -8,13 +8,37 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import moment from "moment/moment";
 
-function AddProductDialog({ open, toggle }) {
+function AddProductDialog({ open, toggle, handleSubmit }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [cost, setCost] = useState(0);
   const [insuranceCost, setInsuranceCost] = useState(0);
   const [muttiPrice, setMuttiPrice] = useState(0);
   const [type, setType] = useState("");
+
+  const id = Math.random().toString();
+
+  const saveProduct = () => {
+    const product = {
+      id,
+      display_name: name,
+      walk_in_selling_price: Number(price),
+      cost_price: Number(cost),
+      insurance_unit_price: Number(insuranceCost),
+      mutti_selling_price: Number(muttiPrice),
+      package: { form: type },
+      deleted: false,
+      price: [
+        {
+          cost_price: cost,
+          timeStamp: moment(new Date()).format("YYYY-MM-DD"),
+        },
+      ],
+    };
+    console.log(product);
+    handleSubmit(product);
+    toggle();
+  };
 
   return (
     <div stlye={{}}>
