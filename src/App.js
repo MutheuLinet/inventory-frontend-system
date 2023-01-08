@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     getProductsData();
   }, []);
+
   //fetches products and sets them to state
   const getProductsData = async () => {
     const initialProducts = await fetchInventoryProducts();
@@ -28,6 +29,12 @@ function App() {
     setShowDialog(false);
   };
 
+  //add product from AddProductDialog to products array
+  const handleAddNewProduct = (product) => {
+    setProducts([...products, product]);
+  };
+
+  console.log(typeof handleAddNewProduct);
   return (
     <div className="App">
       <h3>Inventory Management System</h3>
@@ -37,7 +44,11 @@ function App() {
         Add Product
       </button>
       <br />
-      <AddProductDialog open={showDialog} toggle={handleClose} />
+      <AddProductDialog
+        open={showDialog}
+        toggle={handleClose}
+        handleSubmit={handleAddNewProduct}
+      />
     </div>
   );
 }
