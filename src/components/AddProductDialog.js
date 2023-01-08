@@ -18,6 +18,15 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
 
   const id = Math.random().toString();
 
+  const clearAddProductInputs = () => {
+    setName("");
+    setCost(0);
+    setPrice(0);
+    setInsuranceCost(0);
+    setMuttiPrice(0);
+    setType("");
+  };
+
   const saveProduct = () => {
     const product = {
       id,
@@ -38,6 +47,7 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
     console.log(product);
     handleSubmit(product);
     toggle();
+    clearAddProductInputs();
   };
 
   return (
