@@ -43,7 +43,7 @@ No bugs have been encountered yet.
 
 ## License
 
-MIT License [found here](LICENSE) @twst 2022.
+MIT License.
 
 ## Available Scripts
 
