@@ -16,6 +16,21 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
     const [muttiPrice, setMuttiPrice] = useState(0);
     const [type, setType] = useState("");
 
+    const userProduct = {
+        ...item,
+        id: item.id,
+        display_name: name,
+        walk_in_selling_price: price,
+        cost_price: cost,
+        insurance_unit_price: insuranceCost,
+        mutti_selling_price: muttiPrice,
+        package: { form: type },
+        deleted: false,
+        price: [
+            { cost_price: cost, timeStamp: moment(new Date()).format("YYYY-MM-DD") },
+        ],
+    };
+
     return (
         <div stlye={{}}>
             <Dialog open={open}>
