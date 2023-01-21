@@ -4,10 +4,12 @@ import { InventoryTable } from "./components/InventoryTable";
 import { fetchInventoryProducts } from "./api/fetchInventoryProducts";
 import { getProductsDisplayData } from "./helpers/getProductsDisplayData";
 import { AddProductDialog } from "./components/AddProductDialog";
+import { EditDeleteProductDialog } from "./components/EditDeleteProductDialog";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
+  const [activeItem, setActiveItem] = useState(undefined);
 
   useEffect(() => {
     getProductsData();
@@ -34,16 +36,19 @@ function App() {
     setProducts([...products, product]);
   };
 
-  console.log(typeof handleAddNewProduct);
+  const editDeleteItem = (item) => {
+    setActiveItem(item);
+  };
   return (
     <div className="App">
       <h3>Inventory Management System</h3>
-      <InventoryTable products={products} />
+      <InventoryTable products={products} handleEdit={editDeleteItem} />
       <br />
       <button onClick={handleClickToOpen} style={{ marginBottom: "20px" }}>
         Add Product
       </button>
       <br />
+
       <AddProductDialog
         open={showDialog}
         toggle={handleClose}
