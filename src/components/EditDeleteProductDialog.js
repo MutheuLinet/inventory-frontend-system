@@ -25,6 +25,14 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
         setType(item?.package?.form);
     }, [item]);
 
+    const toNumber = (value) => {
+        if (typeof value === "number") return value;
+        return parseInt(value.replace(/[^\d]+/g, ""));
+    };
+
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat("es-PY").format(toNumber(price));
+    };
     const userProduct = {
         ...item,
         id: item.id,
