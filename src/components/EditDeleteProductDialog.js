@@ -39,6 +39,15 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
             { cost_price: cost, timeStamp: moment(new Date()).format("YYYY-MM-DD") },
         ],
     };
+    const handleEdit = () => {
+        const product = userProduct;
+        onEdit(product);
+    };
+
+    const handleDelete = () => {
+        const product = userProduct;
+        onDelete(product);
+    };
 
     return (
         <div stlye={{}}>
