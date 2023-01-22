@@ -48,7 +48,9 @@ function App() {
         Add Product
       </button>
       <br />
-
+      {activeItem && (
+        <EditDeleteProductDialog open={activeItem} toggle={() => setActiveItem(undefined)} item={activeItem} onDelete={deleteProduct} onEdit={editProduct} />
+      )}
       <AddProductDialog
         open={showDialog}
         toggle={handleClose}
