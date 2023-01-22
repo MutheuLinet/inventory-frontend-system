@@ -16,6 +16,15 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
     const [muttiPrice, setMuttiPrice] = useState(0);
     const [type, setType] = useState("");
 
+    useEffect(() => {
+        setName(item?.display_name);
+        setPrice(item?.walk_in_selling_price);
+        setCost(item?.cost_price);
+        setInsuranceCost(item?.insurance_unit_price);
+        setMuttiPrice(item?.mutti_selling_price);
+        setType(item?.package?.form);
+    }, [item]);
+
     const userProduct = {
         ...item,
         id: item.id,
