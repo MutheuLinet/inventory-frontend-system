@@ -10,10 +10,10 @@ import moment from "moment/moment";
 
 function AddProductDialog({ open, toggle, handleSubmit }) {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [cost, setCost] = useState(0);
-  const [insuranceCost, setInsuranceCost] = useState(0);
-  const [muttiPrice, setMuttiPrice] = useState(0);
+  const [price, setPrice] = useState();
+  const [cost, setCost] = useState();
+  const [insuranceCost, setInsuranceCost] = useState();
+  const [muttiPrice, setMuttiPrice] = useState();
   const [type, setType] = useState("");
 
   const id = Math.random().toString();
@@ -44,7 +44,6 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
         },
       ],
     };
-    console.log(product);
     handleSubmit(product);
     toggle();
     clearAddProductInputs();
@@ -54,11 +53,16 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
     <div stlye={{}}>
       <Dialog open={open}>
         <DialogActions>
-          <Button variant="outlined" color="primary" onClick={toggle}>
+          <button
+            className="custom-btn"
+            variant="outlined"
+            color="primary"
+            onClick={toggle}
+          >
             Close
-          </Button>
+          </button>
         </DialogActions>
-        <DialogTitle>{"Add a Product"}</DialogTitle>
+        {/* <DialogTitle>{"Add a Product"}</DialogTitle> */}
         <DialogContent>
           <Box
             component="form"
@@ -74,6 +78,9 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
             noValidate
             autoComplete="off"
           >
+            <h3 style={{ marginTop: 0, marginBottom: "10px" }}>
+              Add a Product
+            </h3>
             <TextField style={{ display: "none" }} />
             <TextField
               value={name}
