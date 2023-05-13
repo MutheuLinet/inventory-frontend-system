@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Box from "@material-ui/core/Box";
@@ -71,7 +70,6 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
           </button>
         </DialogActions>
 
-        <DialogTitle>{`Edit Product`}</DialogTitle>
         <DialogContent>
           <Box
             component="form"
@@ -87,6 +85,8 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
             noValidate
             autoComplete="off"
           >
+            <h3 style={{ marginTop: 0, marginBottom: "10px" }}>Edit Product</h3>
+
             <TextField style={{ display: "none" }} />
             <TextField
               value={name}
