@@ -9,10 +9,10 @@ import moment from "moment/moment";
 
 function AddProductDialog({ open, toggle, handleSubmit }) {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState();
-  const [cost, setCost] = useState();
-  const [insuranceCost, setInsuranceCost] = useState();
-  const [muttiPrice, setMuttiPrice] = useState();
+  const [price, setPrice] = useState(0);
+  const [cost, setCost] = useState(0);
+  const [insuranceCost, setInsuranceCost] = useState(0);
+  const [muttiPrice, setMuttiPrice] = useState(0);
   const [type, setType] = useState("");
 
   const id = Math.random().toString();
