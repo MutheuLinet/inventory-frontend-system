@@ -64,9 +64,6 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
         <DialogContent>
           <Box
             component="form"
-            sx={{
-              "& > :not(style)": { m: 1, width: "25ch" },
-            }}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -79,13 +76,12 @@ function AddProductDialog({ open, toggle, handleSubmit }) {
             <h3 style={{ marginTop: 0, marginBottom: "10px" }}>
               Add a Product
             </h3>
-            <TextField style={{ display: "none" }} />
             <TextField
               value={name}
               type="input"
               id="standard-basic1"
-              label="Product Name"
-              placeholder="Product Name"
+              label="Name"
+              placeholder="Name"
               variant="standard"
               onChange={(e) => setName(e.target.value)}
             />

@@ -73,9 +73,6 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
         <DialogContent>
           <Box
             component="form"
-            sx={{
-              "& > :not(style)": { m: 1, width: "25ch" },
-            }}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -87,7 +84,6 @@ const EditDeleteProductDialog = ({ open, toggle, onEdit, onDelete, item }) => {
           >
             <h3 style={{ marginTop: 0, marginBottom: "10px" }}>Edit Product</h3>
 
-            <TextField style={{ display: "none" }} />
             <TextField
               value={name}
               type="input"
